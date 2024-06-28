@@ -95,7 +95,12 @@ public class BookingManager {
 				Booking booking = iterator.next();
 				
 				if (booking.getUserId().equals(userId)) {
+					Room room = rooms.get(booking.getRoomCode());
+					room.setStatus(BookingStatus.AVAILABLE);
+					
 					iterator.remove();
+					
+					return;
 				}
 			}
 		}
@@ -160,7 +165,12 @@ public class BookingManager {
 			Booking booking = iterator.next();
 			
 			if (booking.getId().equals(id)) {
+				Room room = rooms.get(booking.getRoomCode());
+				room.setStatus(BookingStatus.AVAILABLE);
+				
 				iterator.remove();
+				
+				return;
 			}
 		}
 	}
